@@ -27,4 +27,3 @@ colnames(mm)<-c("cell2", "cell3", "cell1", "cell2", "cell1", "cell3", "cell3", "
 format_matrix_data(mm)
 
 }
-

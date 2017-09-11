@@ -43,4 +43,3 @@ colnames(new.data)<-c("cell11", "cell11", "cell11", "cell12", "cell12", "cell12"
 add_sample_into_compendium(compendium.data = compendium.data, sample.data = new.data, geneID = "external_gene_name")
 
 }
-

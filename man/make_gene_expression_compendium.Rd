@@ -33,4 +33,3 @@ colnames(exp.data)<-c("cell1", "cell1", "cell1", "cell2", "cell2", "cell2", "cel
 make_gene_expression_compendium(gene.expression.data=exp.data, expression.data.format="matrix")
 
 }
-

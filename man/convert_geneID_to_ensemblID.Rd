@@ -38,4 +38,3 @@ marker.genes<-c("CRYAA", "CRYAB", "CRYBB3", "PAX6", "SOX2", "PROX1", "SIX3", "CR
 convert_geneID_to_ensemblID(user.cell.data=marker.genes, species = "hsapiens", forMarkerGenes = T, markerGeneFormat = "vector")
 
 }
-

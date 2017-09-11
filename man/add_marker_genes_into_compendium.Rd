@@ -29,13 +29,10 @@ This function adds a set of marker genes to a marker gene compendium. The marker
 This function adds a set of marker genes to a marker gene compendium. The marker gene data can be a list with more than one cell type / tissue or a vector for a single cell type / tissue. This function adds only those marker genes that are exist in the marker gene compendium.
 }
 \examples{
-## First we will load the human ENCODE data set and their descriptor from C3 repository
-load("https://github.com/VCCRI/C3/data/all_FPKMs_human_cleanID.RData")
-load("https://github.com/VCCRI/C3/data/experiment.descriptors.humanEncode.RData")
-
-## Then we will make the compendium using these data sets
-## The gene expression data sets are in list format. Here every list element denotes a cell or tissue type
-human.compendium<-make_gene_expression_compendium(gene.expression.data=all_FPKMs_clean_ID, experiment.descriptor=experiment.descriptors.humanEncode, expression.data.format="list")
+## Here we will use "human.encode.data" and "human.encode.data.descriptor" from C3 repository to make the compendium.
+## These data sets are loaded automatically with the package.
+## The gene expression data sets are in list format. Here every list element contains transcriptomic profile data of a cell or tissue type.
+human.compendium<-make_gene_expression_compendium(gene.expression.data=human.encode.data, experiment.descriptor=human.encode.data.descriptor, expression.data.format="list")
 
 ## Next we will make the marker gene compendium from the human.compendium
 human.marker.gene.compendium<-make_marker_gene_compendium(compendium.data=human.compendium, specific.cutoff = 0.05, top.expressed.genes = 500)
@@ -48,4 +45,3 @@ human.marker.gene.compendium.update<-add_marker_genes_into_compendium(marker.gen
 names(which(human.marker.gene.compendium.update$marker.genes.matrix[,1]==1))
 
 }
-

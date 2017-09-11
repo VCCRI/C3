@@ -29,4 +29,3 @@ This function converts the query data into a list of XGSA data sets containing t
 Used within C3 framework
 
 }
-

@@ -24,4 +24,3 @@ rownames(dd)<-c("CRYAA", "CRYAB", "CRYBB3", "PAX6", "SOX2", "PROX1", "SIX3", "CR
 compute_mean(dd)
 
 }
-

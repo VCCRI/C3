@@ -25,4 +25,3 @@ colnames(specific.compendium)<-c("cell1", "cell2", "cell3", "cell4", "cell5", "c
 convert_compendium_to_gene_sets(specific.compendium)
 
 }
-

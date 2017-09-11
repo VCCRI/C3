@@ -2,9 +2,9 @@
 % Please edit documentation in R/c3_functions.R
 \docType{package}
 \name{c3-package}
-\alias{C3}
-\alias{c3}
 \alias{c3-package}
+\alias{c3}
+\alias{C3}
 \title{C3: Cross-species compendium-based cell-type identification}
 \description{
 C3 is an R package for cross-species compendium-based cell-type identification. This package contains the neccessary R code to run C3 as described in "C3: An R package for compendium-based cross-species cell-type identification". C3 is implemented within a helpful framework to identify an unknown cell-type from a transcriptomic profile.
@@ -17,4 +17,3 @@ C3 is an R package for cross-species compendium-based cell-type identification. 
 \author{
 Md Humayun Kabir <humayun.mkabir@gmail.com>
 }
-

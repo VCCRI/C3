@@ -27,4 +27,3 @@ human.ensembl.symbol.map<-make_ENSEMBL_symbol_map('hsapiens', ensemblId.toMappin
 head(human.ensembl.symbol.map)
 
 }
-

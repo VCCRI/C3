@@ -37,4 +37,3 @@ colnames(query.data)<-c("cell1", "cell1", "cell1", "cell2", "cell2", "cell2", "c
 preprocess_querydata(cell.tissue.data=query.data, geneID="external_gene_name")
 
 }
-

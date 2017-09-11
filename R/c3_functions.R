@@ -619,13 +619,10 @@ add_sample_into_compendium<-function(compendium.data, sample.data, species = "hs
 #' @export
 #'
 #' @examples
-#' ## First we will load the human ENCODE data set and their descriptor from C3 repository
-#' load("https://github.com/VCCRI/C3/data/all_FPKMs_human_cleanID.RData")
-#' load("https://github.com/VCCRI/C3/data/experiment.descriptors.humanEncode.RData")
-#'
-#' ## Then we will make the compendium using these data sets
-#' ## The gene expression data sets are in list format. Here every list element denotes a cell or tissue type
-#' human.compendium<-make_gene_expression_compendium(gene.expression.data=all_FPKMs_clean_ID, experiment.descriptor=experiment.descriptors.humanEncode, expression.data.format="list")
+#' ## Here we will use "human.encode.data" and "human.encode.data.descriptor" from C3 repository to make the compendium.
+#' ## These data sets are loaded automatically with the package.
+#' ## The gene expression data sets are in list format. Here every list element contains transcriptomic profile data of a cell or tissue type.
+#' human.compendium<-make_gene_expression_compendium(gene.expression.data=human.encode.data, experiment.descriptor=human.encode.data.descriptor, expression.data.format="list")
 #'
 #' ## Finally we will make the marker gene compendium from the human.compendium
 #' human.marker.gene.compendium<-make_marker_gene_compendium(compendium.data=human.compendium, specific.cutoff = 0.05, top.expressed.genes = 500)
@@ -704,13 +701,10 @@ make_marker_gene_compendium<-function(compendium.data, specific.cutoff=0.05, top
 #' @export
 #'
 #' @examples
-#' ## First we will load the human ENCODE data set and their descriptor from C3 repository
-#' load("https://github.com/VCCRI/C3/data/all_FPKMs_human_cleanID.RData")
-#' load("https://github.com/VCCRI/C3/data/experiment.descriptors.humanEncode.RData")
-#'
-#' ## Then we will make the compendium using these data sets
-#' ## The gene expression data sets are in list format. Here every list element denotes a cell or tissue type
-#' human.compendium<-make_gene_expression_compendium(gene.expression.data=all_FPKMs_clean_ID, experiment.descriptor=experiment.descriptors.humanEncode, expression.data.format="list")
+#' ## Here we will use "human.encode.data" and "human.encode.data.descriptor" from C3 repository to make the compendium.
+#' ## These data sets are loaded automatically with the package.
+#' ## The gene expression data sets are in list format. Here every list element contains transcriptomic profile data of a cell or tissue type.
+#' human.compendium<-make_gene_expression_compendium(gene.expression.data=human.encode.data, experiment.descriptor=human.encode.data.descriptor, expression.data.format="list")
 #'
 #' ## Next we will make the marker gene compendium from the human.compendium
 #' human.marker.gene.compendium<-make_marker_gene_compendium(compendium.data=human.compendium, specific.cutoff = 0.05, top.expressed.genes = 500)
@@ -1018,29 +1012,24 @@ convert_compendium_to_gene_sets<-function(specific.compendium){
 #' @export
 #'
 #' @examples
-#' ## First we will load the human ENCODE data set and their descriptor from C3 repository
-#' load("https://github.com/VCCRI/C3/data/all_FPKMs_human_cleanID.RData")
-#' load("https://github.com/VCCRI/C3/data/experiment.descriptors.humanEncode.RData")
+#' ## Here we will use "human.encode.data" and "human.encode.data.descriptor" from C3 repository to make the compendium.
+#' ## These data sets are loaded automatically with the package.
+#' ## The gene expression data sets are in list format. Here every list element contains transcriptomic profile data of a cell or tissue type.
+#' human.compendium<-make_gene_expression_compendium(gene.expression.data=human.encode.data, experiment.descriptor=human.encode.data.descriptor, expression.data.format="list")
 #'
-#' ## The gene expression data sets are in list format. Here every list element denotes a cell or tissue type
-#' ## Then we will make the compendium using these data sets
-#' human.compendium<-make_gene_expression_compendium(gene.expression.data=all_FPKMs_clean_ID, experiment.descriptor =  experiment.descriptors.humanEncode, expression.data.format="list")
-#'
-#' ## We will load and add Hawse et al lens gene expression data sets
-#' ## This data set has 2 different cell types - LEC and LFC. Each cell type has 3 replicates
-#' load("https://github.com/VCCRI/C3/data/Hawse.all.unique.RData")
+#' ## Then we will add "hawse.human.lens.data" to the compendium. This data is also loaded with the package.
+#' ## This data set has 2 different cell types - lens epithelial cell (LEC) and lens fiber cell (LFC). Each cell type has 3 biological replicates.
 #' Hawse.data.descriptor<-c("Hawse_LEC","Hawse_LEC","Hawse_LEC","Hawse_LFC","Hawse_LFC","Hawse_LFC")
-#' Hawse.human.compendium<-add_sample_into_compendium(compendium.data=human.compendium, sample.data=Hawse.all.unique, species = "hsapiens", data.format = "matrix", geneID = "external_gene_name", experiment.descriptor = Hawse.data.descriptor)
+#' Hawse.human.compendium<-add_sample_into_compendium(compendium.data=human.compendium, sample.data=hawse.human.lens.data, species = "hsapiens", data.format = "matrix", geneID = "external_gene_name", experiment.descriptor = Hawse.data.descriptor)
 #'
 #' ## Next we will make the marker gene compendium from the Hawse.human.compendium
 #' human.marker.gene.compendium<-make_marker_gene_compendium(compendium.data =Hawse.human.compendium, specific.cutoff = 0.05, top.expressed.genes = 500)
 #'
-#' ## Now we will load Hoang et al mouse lens data set and test this data set (as query data) with the Hawse.human.compendium
-#' ## This data set contains 2 separate cell type: LEC and LFC. Each cell contains average expression value of 3 replicates
-#' load("https://github.com/VCCRI/C3/data/Hoang.data.Rdata")
-#' Hoang.processed.query.data<-preprocess_querydata(cell.tissue.data = Hoang.data, species = "mmusculus", data.format = "matrix", geneID = "external_gene_name")
+#' ## Now we will pre-process the "hoang.mouse.lens.data" (query data). This data is also loaded with the package.
+#' ## This data set also contains 2 separate cell type: LEC and LFC. Each cell contains average expression value of 3 replicates.
+#' Hoang.processed.query.data<-preprocess_querydata(cell.tissue.data = hoang.mouse.lens.data, species = "mmusculus", data.format = "matrix", geneID = "external_gene_name")
 #'
-#' ## Finally we will perform the test of the query data with the compendium
+#' ## Finally we will perform the test of the query data with the human.marker.gene.compendium
 #' Hoang.data.test.result<-c3_test(processed.queryData = Hoang.processed.query.data, marker.gene.compendium = human.marker.gene.compendium)
 #' head(sort(Hoang.data.test.result$Hoang_LEC$pvalue))
 #' head(sort(Hoang.data.test.result$Hoang_LFC$pvalue))
@@ -1118,29 +1107,24 @@ c3_test<-function(processed.queryData, marker.gene.compendium, min=1, max=5000, 
 #' @export
 #'
 #' @examples
-#' ## First we will load the human ENCODE data set and their descriptor from C3 repository
-#' load("https://github.com/VCCRI/C3/data/all_FPKMs_human_cleanID.RData")
-#' load("https://github.com/VCCRI/C3/data/experiment.descriptors.humanEncode.RData")
+#' ## Here we will use "human.encode.data" and "human.encode.data.descriptor" from C3 repository to make the compendium.
+#' ## These data sets are loaded automatically with the package.
+#' ## The gene expression data sets are in list format. Here every list element contains transcriptomic profile data of a cell or tissue type.
+#' human.compendium<-make_gene_expression_compendium(gene.expression.data=human.encode.data, experiment.descriptor=human.encode.data.descriptor, expression.data.format="list")
 #'
-#' ## The gene expression data sets are in list format. Here every list element denotes a cell or tissue type
-#' ## Then we will make the compendium using these data sets
-#' human.compendium<-make_gene_expression_compendium(gene.expression.data=all_FPKMs_clean_ID, experiment.descriptor =  experiment.descriptors.humanEncode, expression.data.format="list")
-#'
-#' ## We will load and add Hawse et al lens gene expression data sets
-#' ## This data set has 2 different cell types - LEC and LFC. Each cell type has 3 replicates
-#' load("https://github.com/VCCRI/C3/data/Hawse.all.unique.RData")
+#' ## Then we will add "hawse.human.lens.data" to the compendium. This data is also loaded with the package.
+#' ## This data set has 2 different cell types - lens epithelial cell (LEC) and lens fiber cell (LFC). Each cell type has 3 biological replicates.
 #' Hawse.data.descriptor<-c("Hawse_LEC","Hawse_LEC","Hawse_LEC","Hawse_LFC","Hawse_LFC","Hawse_LFC")
-#' Hawse.human.compendium<-add_sample_into_compendium(compendium.data=human.compendium, sample.data=Hawse.all.unique, species = "hsapiens", data.format = "matrix", geneID = "external_gene_name", experiment.descriptor = Hawse.data.descriptor)
+#' Hawse.human.compendium<-add_sample_into_compendium(compendium.data=human.compendium, sample.data=hawse.human.lens.data, species = "hsapiens", data.format = "matrix", geneID = "external_gene_name", experiment.descriptor = Hawse.data.descriptor)
 #'
 #' ## Next we will make the marker gene compendium from the Hawse.human.compendium
 #' human.marker.gene.compendium<-make_marker_gene_compendium(compendium.data =Hawse.human.compendium, specific.cutoff = 0.05, top.expressed.genes = 500)
 #'
-#' ## Now we will load Hoang et al mouse lens data set and test this data set (as query data) with the Hawse.human.compendium
-#' ## This data set contains 2 separate cell type: LEC and LFC. Each cell contains average expression value of 3 replicates
-#' load("https://github.com/VCCRI/C3/data/Hoang.data.Rdata")
-#' Hoang.processed.query.data<-preprocess_querydata(cell.tissue.data = Hoang.data, species = "mmusculus", data.format = "matrix", geneID = "external_gene_name")
+#' ## Now we will pre-process the "hoang.mouse.lens.data" (query data). This data is also loaded with the package.
+#' ## This data set also contains 2 separate cell type: LEC and LFC. Each cell contains average expression value of 3 replicates.
+#' Hoang.processed.query.data<-preprocess_querydata(cell.tissue.data = hoang.mouse.lens.data, species = "mmusculus", data.format = "matrix", geneID = "external_gene_name")
 #'
-#' ## Finally we will perform the test of the query data with the compendium
+#' ## Next we will perform the test of the query data with the human.marker.gene.compendium
 #' Hoang.data.test.result<-c3_test(processed.queryData = Hoang.processed.query.data, marker.gene.compendium = human.marker.gene.compendium)
 #'
 #' ## Finally we will display the test result in a bar plot where the top result shows the matched query data

@@ -2,8 +2,8 @@
 % Please edit documentation in R/c3_functions.R
 \docType{data}
 \name{c3_params}
-\alias{biomart.ID}
 \alias{c3_params}
+\alias{biomart.ID}
 \title{c3_params}
 \format{An object of class \code{character} of length 1.}
 \usage{
@@ -13,4 +13,3 @@ biomart.ID
 When Ensembl move servers (rarely) or it is down (less rare) these variable may need to be changed, for example to an archived version
 }
 \keyword{datasets}
-

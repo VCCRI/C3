@@ -22,4 +22,3 @@ This helper function returns a data frame with two columns containing all valid 
 human.valid.gene.IDs<-find_valid_geneID(species = "hsapiens")
 head(human.valid.gene.IDs)
 }
-
