@@ -1,0 +1,15 @@
+Package: c3
+Type: Package
+Title: An R package for cross-species compendium-based cell-type
+    identification for transcriptomic profile
+Version: 0.1.0
+Author: Md Humayun Kabir
+Maintainer: Md Humayun Kabir <humayun.mkabir@gmail.com>
+Description: An R package for cross-species compendium-based cell-type
+    identification for transcriptomic profile
+Depends: R (>= 3.3.2)
+Imports: xgsa, slam, biomaRt
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
