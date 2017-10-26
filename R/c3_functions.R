@@ -827,7 +827,7 @@ preprocess_querydata<-function(cell.tissue.data, species = "hsapiens", data.form
     cell.data.formatted<-format_list_data(cell.tissue.data, experiment.descriptor)
   }
   else if(data.format=="vector"){
-    cell.data.formatted<-data.frame("newly_added"=cell.tissue.data)
+    cell.data.formatted<-data.frame("query_data"=cell.tissue.data)
     if(!(is.null(experiment.descriptor))) colnames(cell.data.formatted)<-experiment.descriptor
   }
   else{
@@ -1153,6 +1153,8 @@ c3_display_result<-function(c3.result){
       }
       #making negative log10 of the significant sorted p-values
       significant.pvalue.log <- -log10(significant.pvalue)
+      #checking infinity and if found set 999
+      significant.pvalue.log[is.infinite(significant.pvalue.log)]<-999
       #taking reverse of the negative log10 p-values and displayed in the bar plot
       barplot(rev(significant.pvalue.log), main = title, xlab = "-log10(p-value)", las=2, horiz=TRUE, cex.names = 0.7)
     }
