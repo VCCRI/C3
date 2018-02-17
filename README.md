@@ -13,14 +13,14 @@ This file contains the R code to run an example workflow for cell type identific
 
 The user makes their own compendium from a collection of transcriptomic data sets using the 'make\_gene\_expression\_compendium' function of the package. The user can add further transcriptomic samples to it using 'add\_sample\_into\_compendium' function into the compendium. Once all reference samples are added to the compendium, it is transformed into a marker gene compendium using the 'make\_marker\_gene\_compendium' function. At this stage the user can also add marker genes for additional reference samples using the 'add\_marker\_genes\_into\_compendium' function. For the unknown / query data, the user pre-processes the data using the 'preprocess\_querydata' function for gene ID conversion. Finally, the user performs gene set enrichment testing of the processed query data against the marker gene compendium to identify the possible cell type or tissue, using the 'c3\_test' function, and can visualise the results using the 'c3\_display\_result' function.
 
-All the necessary data to run the example workflow are deposited in the C3 github repository <https://github.com/VCCRI/C3/data>. These data are automatically loaded with the package.
+All the necessary data to run the example workflow are deposited in the C3 github repository <https://github.com/VCCRI/C3/tree/master/data>. These data are automatically loaded with the package. This may take some time during installation.
 
 Please note that it is best to consistently pre-process both the compendium and query data before comparing them (Log normalisation, etc). Remember that micro-array data often requires extra normalisation steps (including background subtraction and quantile normalisation, or other methods). The c3 package does not perform such normalisations. In this example workflow we use non Log-normalised data.
 
 Installation
 ------------
 
-Make sure you have installed the packages "devtools", "biomaRt", "slam" and "xgsa", the commands to do so are as follows:
+Make sure you have installed the packages 'devtools', 'biomaRt', 'slam' and 'xgsa', the commands to do so are as follows:
 
 Open an R session and do the following:
 
