@@ -30,6 +30,8 @@ The user makes their own compendium from a collection of transcriptomic data set
   
 All the necessary data to run the example workflow are deposited in the C3 github repository <https://github.com/VCCRI/C3/tree/master/data>. These data are automatically loaded with the package. This may take some time during installation.
   
+C3 depends on XGSA for homology mapping between species that accesses Ensembl through the Biomart portal. Because of this we use Ensembl IDs to represent our genes. Ensembl / Biomart occassionally goes down. This can result in strange errors such as "Extra content at the end of the document". You can check the status of the Ensembl web services here https://wtsi-status.blogspot.com.au/ and here http://www.ensembl.info/blog/category/web/web-status/ . Currently the only solution is to wait for Ensembl to come fully back online and try again.
+
 Please note that it is best to consistently pre-process both the compendium and query data before comparing them (Log normalisation, etc). Remember that micro-array data often requires extra normalisation steps (including background subtraction and quantile normalisation, or other methods). The c3 package does not perform such normalisations. In this example workflow we use non Log-normalised data.
 
   
@@ -66,7 +68,11 @@ Package installation and loading is done!
   
   
 You are now ready to run the example.   
-
+You can run the entire following example using:
+```{r, eval=FALSE}
+example(c3)
+```
+  
   
 ## Example
 In this workflow, we will ustilise the human ENCODE transcriptome data and associated labels (cell or tissue names) ([PMID:22955616](https://www.ncbi.nlm.nih.gov/pubmed/22955616)), Hoang et al. new born mouse lens transcriptomic data ([PMID:25489224](https://www.ncbi.nlm.nih.gov/pubmed/25489224)) and Hawse et al. adult human lens transcriptomic data ([PMID:15851978](https://www.ncbi.nlm.nih.gov/pubmed/15851978)) from the C3 github repository. The human ENCODE data is in the list format where each list element contains the replicate transcriptomes for a cell or tissue. The labels have the cell or tissue names matching the list elements. 

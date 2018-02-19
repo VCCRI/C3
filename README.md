@@ -15,6 +15,8 @@ The user makes their own compendium from a collection of transcriptomic data set
 
 All the necessary data to run the example workflow are deposited in the C3 github repository <https://github.com/VCCRI/C3/tree/master/data>. These data are automatically loaded with the package. This may take some time during installation.
 
+C3 depends on XGSA for homology mapping between species that accesses Ensembl through the Biomart portal. Because of this we use Ensembl IDs to represent our genes. Ensembl / Biomart occassionally goes down. This can result in strange errors such as "Extra content at the end of the document". You can check the status of the Ensembl web services here <https://wtsi-status.blogspot.com.au/> and here <http://www.ensembl.info/blog/category/web/web-status/> . Currently the only solution is to wait for Ensembl to come fully back online and try again.
+
 Please note that it is best to consistently pre-process both the compendium and query data before comparing them (Log normalisation, etc). Remember that micro-array data often requires extra normalisation steps (including background subtraction and quantile normalisation, or other methods). The c3 package does not perform such normalisations. In this example workflow we use non Log-normalised data.
 
 Installation
@@ -52,6 +54,11 @@ library(c3)
 Package installation and loading is done!
 
 You are now ready to run the example.
+You can run the entire following example using:
+
+``` r
+example(c3)
+```
 
 Example
 -------
@@ -85,7 +92,7 @@ We now convert the compendium to a set of uniquely\* highly expressed tissue / c
 human.marker.gene.compendium<-make_marker_gene_compendium(compendium.data = Hawse.human.compendium, specific.cutoff = 0.05, top.expressed.genes = 500)
 ```
 
-![](README-unnamed-chunk-7-1.png)
+![](README-unnamed-chunk-8-1.png)
 
 ### Pre-process the mouse lens transcriptome query data
 
@@ -112,11 +119,11 @@ par(mar=c(10,10,5,5))
 c3_display_result(Hoang.data.test.result)
 ```
 
-![](README-unnamed-chunk-10-1.png)
+![](README-unnamed-chunk-11-1.png)
 
     #> [1] "Hoang_LEC -- result plotting done!!"
 
-![](README-unnamed-chunk-10-2.png)
+![](README-unnamed-chunk-11-2.png)
 
     #> [1] "Hoang_LFC -- result plotting done!!"
 

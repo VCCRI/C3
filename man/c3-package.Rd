@@ -12,6 +12,20 @@ C3 is an R package for cross-species compendium-based cell-type identification. 
 \examples{
 ## Do a sample analysis using human compendium data and mouse lens query data.
 
+## Make human gene expression compendium from ENCODE data
+human.compendium<-make_gene_expression_compendium(gene.expression.data = human.encode.data, species = "hsapiens", experiment.descriptor = human.encode.data.descriptor, expression.data.format = "list")
+## Add Hawse et al. human lens transcriptome to the compendium
+Hawse.data.descriptor<-c("Hawse_LEC","Hawse_LEC","Hawse_LEC","Hawse_LFC","Hawse_LFC","Hawse_LFC")
+Hawse.human.compendium<-add_sample_into_compendium(compendium.data = human.compendium, sample.data = hawse.human.lens.data, species = "hsapiens", data.format = "matrix", geneID = "external_gene_name", experiment.descriptor = Hawse.data.descriptor)
+## Convert to a tissue / cell type specific marker gene compendium
+human.marker.gene.compendium<-make_marker_gene_compendium(compendium.data = Hawse.human.compendium, specific.cutoff = 0.05, top.expressed.genes = 500)
+## Pre-process the mouse lens transcriptome query data
+Hoang.processed.query.data<-preprocess_querydata(cell.tissue.data = hoang.mouse.lens.data, species = "mmusculus", data.format = "matrix", geneID = "external_gene_name")
+## C3 testing of mouse lens query vs. human marker gene compendium
+Hoang.data.test.result<-c3_test(processed.queryData = Hoang.processed.query.data, marker.gene.compendium = human.marker.gene.compendium)
+## Display C3 test result
+par(mar=c(10,10,5,5))
+c3_display_result(Hoang.data.test.result)
 
 }
 \author{
